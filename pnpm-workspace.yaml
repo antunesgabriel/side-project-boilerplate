@@ -9,6 +9,7 @@ catalog:
   typescript: ^5.6.3
   "@types/node": ^20
   "@types/eslint": ^8
+  "@remixicon/react": ^4.6.0
 catalogs:
   react18:
     react: ^18.3.1

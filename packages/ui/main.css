@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,6 +7,9 @@
 @layer base {
   /*#region Colors */
   :root {
+    --font-sans: Inter, sans-serif;;
+    --font-geist-mono: 'Geist Mono', monospace;
+
     --gray-950: #171717;
     --gray-900: #1c1c1c;
     --gray-800: #292929;
@@ -399,7 +402,7 @@
   /*#endregion Colors */
 
   body {
-    @apply bg-bg-white-0 text-text-strong-950;
+    @apply bg-bg-white-0 text-text-strong-950 font-sans text-[16px];
   }
 
   html {
@@ -411,9 +414,4 @@
 .remixicon path {
   transform: scale(0.8996);
   transform-origin: center;
-}
-
-body {
-  font-family: "Geist", sans-serif;
-  font-size: 16px;
 }

@@ -1,3 +1,5 @@
+import Logo from "~/assets/logo-two.svg?react";
+
 import ThemeSwitch from "./theme-switch";
 
 export default function Header() {
@@ -8,13 +10,8 @@ export default function Header() {
           href="/"
           className="flex items-center gap-2 text-label-md text-text-strong-950"
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/logo.svg"
-            alt=""
-            className="object-contain size-9"
-          />
-          AlignUI
+          <Logo className="text-primary-base size-9" />
+          SideSaas
         </a>
 
         <ThemeSwitch />

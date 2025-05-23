@@ -10,26 +10,29 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@remixicon/react": "catalog:",
     "@repo/ui": "workspace:*",
+    "lucide-react": "catalog:",
     "react": "catalog:react18",
     "react-dom": "catalog:react18",
-    "lucide-react": "catalog:"
+    "react-router": "^7.6.0"
   },
   "devDependencies": {
+    "@types/eslint": "catalog:",
     "@types/react": "catalog:react18",
     "@types/react-dom": "catalog:react18",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
-    "@types/eslint": "catalog:",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "autoprefixer": "^10.4.17",
     "eslint": "catalog:",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "prettier": "catalog:",
     "postcss": "^8.4.35",
+    "prettier": "catalog:",
     "tailwindcss": "catalog:",
     "typescript": "catalog:",
-    "vite": "^5.1.0"
+    "vite": "^5.1.0",
+    "vite-plugin-svgr": "^4.3.0"
   }
 }
