@@ -10,7 +10,7 @@ import * as SocialButton from "@repo/ui/components/ui/social-button";
 import IconGoogle from "~/assets/google.svg?react";
 import Logo from "~/assets/logo-two.svg?react";
 
-export function SignInPage() {
+export function SignUpPage() {
   return (
     <main className="h-screen w-full flex items-center justify-center">
       <div className="flex w-full max-w-[400px] shrink-0 flex-col gap-5 bg-bg-white-0 p-7">

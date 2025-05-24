@@ -8,6 +8,7 @@ import { ThemeProvider } from "~/providers/theme-provider";
 import { SignInPage } from "~/pages/auth/sign-in.page";
 import { WelcomeLayout } from "~/layouts/welcome.layout";
 import { WelcomePage } from "~/pages/welcome.page";
+import { SignUpPage } from "~/pages/auth/sign-up.page";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             </Route>
 
             <Route path="/auth/sign-in" element={<SignInPage />} />
+            <Route path="/auth/sign-up" element={<SignUpPage />} />
           </Routes>
         </TooltipProvider>
         <NotificationProvider />

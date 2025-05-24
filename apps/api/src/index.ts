@@ -1,9 +1,25 @@
-import { Hono } from 'hono'
+import { Hono } from "hono";
+import { cors } from "hono/cors";
 
-const app = new Hono()
+import authRoute from "~/routes/auth";
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+const app = new Hono();
 
-export default app
+app.use(
+  cors({
+    origin: process.env.BASE_CLIENT_URL!,
+    allowHeaders: ["Content-Type", "Authorization"],
+    allowMethods: ["POST", "GET", "OPTIONS"],
+    exposeHeaders: ["Content-Length"],
+    maxAge: 600,
+    credentials: true,
+  })
+);
+
+app.get("/", (c) => {
+  return c.text("Hello Hono!");
+});
+
+app.route("/", authRoute);
+
+export default app;

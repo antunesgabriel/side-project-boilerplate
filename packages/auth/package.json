@@ -1,0 +1,20 @@
+{
+  "name": "@repo/auth",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "better-auth": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*",
+    "@types/eslint": "catalog:",
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "eslint": "catalog:"
+  },
+  "exports": {
+    "./auth": "./src/auth.ts",
+    "./client": "./src/client.ts"
+  }
+}

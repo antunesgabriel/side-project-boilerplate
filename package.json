@@ -8,6 +8,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@better-auth/cli": "^1.2.8",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*",
     "prettier": "catalog:",
@@ -19,6 +20,8 @@
   },
   "dependencies": {
     "@remixicon/react": "catalog:",
-    "@tanstack/react-table": "catalog:"
+    "@tanstack/react-table": "catalog:",
+    "better-auth": "catalog:",
+    "eslint": "catalog:"
   }
 }
