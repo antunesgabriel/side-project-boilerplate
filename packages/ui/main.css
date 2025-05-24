@@ -227,22 +227,22 @@
     --social-zendesk: #16140d;
 
     /* --orange-800, --green-800, --purple-800. --blue-800 */
-    --primary-dark: var(--blue-800);
+    --primary-dark: var(--orange-800);
 
     /* --orange-700, --green-700, --purple-700, --blue-700 */
-    --primary-darker: var(--blue-700);
+    --primary-darker: var(--orange-700);
 
     /* --orange-500, --green-500, --purple-500, --blue-500 */
-    --primary-base: var(--blue-500);
+    --primary-base: var(--orange-500);
 
     /* --orange-alpha-24, --green-alpha-24, --purple-alpha-24, --blue-alpha-24 */
-    --primary-alpha-24: var(--blue-alpha-24);
+    --primary-alpha-24: var(--orange-alpha-24);
 
     /* --orange-alpha-16, --green-alpha-16, --purple-alpha-16, --blue-alpha-16 */
-    --primary-alpha-16: var(--blue-alpha-16);
+    --primary-alpha-16: var(--orange-alpha-16);
 
     /* --orange-alpha-10, --green-alpha-10, --purple-alpha-10, --blue-alpha-10 */
-    --primary-alpha-10: var(--blue-alpha-10);
+    --primary-alpha-10: var(--orange-alpha-10);
 
     --static-black: var(--neutral-950);
     --static-white: var(--neutral-0);

@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router";
 
 import { Provider as TooltipProvider } from "@repo/ui/components/ui/tooltip";
 import { NotificationProvider } from "@repo/ui/components/ui/notification-provider";
+import { Toaster } from "@repo/ui/components/ui/toast";
 
 import { ThemeProvider } from "~/providers/theme-provider";
 import { SignInPage } from "~/pages/auth/sign-in.page";
@@ -25,6 +26,7 @@ function App() {
           </Routes>
         </TooltipProvider>
         <NotificationProvider />
+        <Toaster />
       </ThemeProvider>
     </BrowserRouter>
   );

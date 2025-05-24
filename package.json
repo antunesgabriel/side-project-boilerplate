@@ -18,6 +18,7 @@
     "node": ">=18"
   },
   "dependencies": {
-    "@remixicon/react": "catalog:"
+    "@remixicon/react": "catalog:",
+    "@tanstack/react-table": "catalog:"
   }
 }

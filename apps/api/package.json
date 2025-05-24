@@ -1,0 +1,14 @@
+{
+  "name": "@apps/api",
+  "scripts": {
+    "dev": "bun wrangler dev",
+    "deploy": "bun wrangler deploy --minify",
+    "cf-typegen": "bun wrangler types --env-interface CloudflareBindings"
+  },
+  "dependencies": {
+    "hono": "^4.7.10"
+  },
+  "devDependencies": {
+    "wrangler": "^4.4.0"
+  }
+}
