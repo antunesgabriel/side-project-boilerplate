@@ -6,6 +6,9 @@ settings:
 
 catalogs:
   default:
+    '@libsql/client':
+      specifier: ^0.15.7
+      version: 0.15.7
     '@remixicon/react':
       specifier: ^4.6.0
       version: 4.6.0
@@ -21,6 +24,12 @@ catalogs:
     better-auth:
       specifier: ^1.2.8
       version: 1.2.8
+    drizzle-kit:
+      specifier: ^0.31.1
+      version: 0.31.1
+    drizzle-orm:
+      specifier: ^0.43.1
+      version: 0.43.1
     eslint:
       specifier: ^8.57.0
       version: 8.57.1
@@ -86,7 +95,7 @@ importers:
   apps/api:
     dependencies:
       '@libsql/client':
-        specifier: ^0.15.7
+        specifier: 'catalog:'
         version: 0.15.7
       '@repo/auth':
         specifier: workspace:*
@@ -95,7 +104,7 @@ importers:
         specifier: ^16.5.0
         version: 16.5.0
       drizzle-orm:
-        specifier: ^0.43.1
+        specifier: 'catalog:'
         version: 0.43.1(@libsql/client@0.15.7)(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(bun-types@1.2.14)(kysely@0.28.2)(prisma@5.22.0)
       hono:
         specifier: ^4.7.10
@@ -105,11 +114,33 @@ importers:
         specifier: ^1.2.14
         version: 1.2.14
       drizzle-kit:
-        specifier: ^0.31.1
+        specifier: 'catalog:'
         version: 0.31.1
       wrangler:
         specifier: ^4.4.0
         version: 4.16.1
+
+  apps/studio:
+    dependencies:
+      '@libsql/client':
+        specifier: 'catalog:'
+        version: 0.15.7
+      drizzle-orm:
+        specifier: 'catalog:'
+        version: 0.43.1(@libsql/client@0.15.7)(@prisma/client@5.22.0(prisma@5.22.0))(@types/better-sqlite3@7.6.13)(better-sqlite3@11.10.0)(bun-types@1.2.14)(kysely@0.28.2)(prisma@5.22.0)
+      typescript:
+        specifier: ^5
+        version: 5.8.3
+    devDependencies:
+      '@types/bun':
+        specifier: latest
+        version: 1.2.14
+      drizzle-kit:
+        specifier: 'catalog:'
+        version: 0.31.1
+      tsx:
+        specifier: ^4.19.4
+        version: 4.19.4
 
   apps/vite:
     dependencies:
@@ -5816,6 +5847,11 @@ packages:
     engines: {node: '>= 6'}
     peerDependencies:
       typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
+
+  tsx@4.19.4:
+    resolution: {integrity: sha512-gK5GVzDkJK1SI1zwHf32Mqxf2tSJkNx+eYcNly5+nHvWqXUJYUkWBQtKauoESz3ymezAI++ZwT855x5p5eop+Q==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
 
   tunnel-agent@0.6.0:
     resolution: {integrity: sha512-McnNiV1l8RYeY8tBgEpuodCC1mLUdbSN+CYBL7kJsJNInOP8UjDDEwdk6Mw60vdLLrr5NHKZhMAOSrR2NZuQ+w==}
@@ -12334,6 +12370,13 @@ snapshots:
     dependencies:
       tslib: 1.14.1
       typescript: 5.8.3
+
+  tsx@4.19.4:
+    dependencies:
+      esbuild: 0.25.4
+      get-tsconfig: 4.10.0
+    optionalDependencies:
+      fsevents: 2.3.3
 
   tunnel-agent@0.6.0:
     dependencies:

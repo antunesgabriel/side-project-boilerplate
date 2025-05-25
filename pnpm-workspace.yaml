@@ -12,6 +12,9 @@ catalog:
   "@remixicon/react": ^4.6.0
   "@tanstack/react-table": ^8.21.3
   better-auth: "^1.2.8"
+  drizzle-orm: "^0.43.1"
+  drizzle-kit: "^0.31.1"
+  "@libsql/client": "^0.15.7"
 catalogs:
   react18:
     react: ^18.3.1

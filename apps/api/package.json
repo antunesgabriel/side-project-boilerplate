@@ -4,21 +4,20 @@
     "dev": "bun wrangler dev",
     "deploy": "bun wrangler deploy --minify",
     "cf-typegen": "bun wrangler types --env-interface CloudflareBindings",
-    "db:generate": "drizzle-kit generate:sqlite",
-    "db:migrate": "drizzle-kit push:sqlite",
-    "db:studio": "drizzle-kit studio",
-    "db:generate-auth": "bunx @better-auth/cli generate --config=./src/config/auth.ts"
+    "setup:auth": "bunx @better-auth/cli generate --config=./src/config/auth.ts --output=./src/db/schema.ts",
+    "db:generate": "bunx drizzle-kit generate",
+    "db:migrate": "bunx drizzle-kit push"
   },
   "dependencies": {
-    "@libsql/client": "^0.15.7",
+    "@libsql/client": "catalog:",
     "@repo/auth": "workspace:*",
     "dotenv": "^16.5.0",
-    "drizzle-orm": "^0.43.1",
+    "drizzle-orm": "catalog:",
     "hono": "^4.7.10"
   },
   "devDependencies": {
     "@types/bun": "^1.2.14",
-    "drizzle-kit": "^0.31.1",
+    "drizzle-kit": "catalog:",
     "wrangler": "^4.4.0"
   }
 }

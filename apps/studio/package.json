@@ -1,0 +1,21 @@
+{
+  "name": "@apps/studio",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bunx drizzle-kit studio"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "drizzle-kit": "catalog:",
+    "tsx": "^4.19.4"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@libsql/client": "catalog:",
+    "drizzle-orm": "catalog:"
+  }
+}
