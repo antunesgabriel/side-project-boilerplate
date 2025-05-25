@@ -23,6 +23,7 @@
     "@remixicon/react": "catalog:",
     "@tanstack/react-table": "catalog:",
     "better-auth": "catalog:",
-    "eslint": "catalog:"
+    "eslint": "catalog:",
+    "zod": "catalog:"
   }
 }

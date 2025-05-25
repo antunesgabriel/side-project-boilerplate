@@ -13,7 +13,8 @@
     "@repo/auth": "workspace:*",
     "dotenv": "^16.5.0",
     "drizzle-orm": "catalog:",
-    "hono": "^4.7.10"
+    "hono": "^4.7.10",
+    "resend": "^4.5.1"
   },
   "devDependencies": {
     "@types/bun": "^1.2.14",

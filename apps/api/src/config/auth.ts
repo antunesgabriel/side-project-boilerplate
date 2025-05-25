@@ -1,6 +1,10 @@
+import { Resend } from "resend";
+
 import { optionsWithDrizzleAdapter, getAuthInstance } from "@repo/auth/auth";
 
 import { db } from "~/config/db";
+
+const resend = new Resend(process.env.RESEND_API_KEY!);
 
 const baseUrl = process.env.BASE_URL!;
 const secret = process.env.BETTER_AUTH_SECRET!;
@@ -10,39 +14,25 @@ const options = optionsWithDrizzleAdapter(db, "sqlite", {}, baseUrl, secret, {
   emailAndPassword: {
     enabled: true,
     requireEmailVerification: true,
-    async sendResetPassword(data, request) {
-      // TODO: implement with resend or other service
-      /*
-          await resend.emails.send({
-                  from,
-                  to: data.user.email,
-                  subject: "Reset your password",
-                  text: `Hey ${data.user.name}, here is your password reset link: ${url}`,
-                  // Doesn't work with edge runtime atm.
-                  // See https://github.com/resend/react-email/issues/1630
-                  // react: reactResetPasswordEmail({
-                  //     username: user.name,
-                  //     resetLink: url,
-                  // }),
-              });
-          */
+    async sendResetPassword({ user, url }) {
+      await resend.emails.send({
+        from: process.env.RESEND_EMAIL_FROM!,
+        to: user.email,
+        subject: "Reset your password",
+        text: `Hey ${user.name}, here is your password reset link: ${url}`,
+        html: `<p>Hey ${user.name},</p><p>Here is your password reset link: <a href="${url}">${url}</a></p>`,
+      });
     },
   },
   emailVerification: {
-    async sendVerificationEmail({ user, url }) {
-      // TODO: implement with resend or other service
-      // await resend.emails.send({
-      //   from,
-      //   to: user.email,
-      //   subject: "Verify your email address",
-      //   text: `Hey ${user.name}, verify your email address, please: ${url}`,
-      //   // Doesn't work with edge runtime atm.
-      //   // See https://github.com/resend/react-email/issues/1630
-      //   // react: reactVerifyEmailEmail({
-      //   //     username: user.name,
-      //   //     verificationLink: url,
-      //   // }),
-      // });
+    async sendVerificationEmail({ user, url, token }) {
+      await resend.emails.send({
+        from: process.env.RESEND_EMAIL_FROM!,
+        to: user.email,
+        subject: "Verify your email address",
+        text: `Hey ${user.name}, verify your email address, please: ${url}`,
+        html: `<p>Hey ${user.name},</p><p>Verify your email address, please: <a href="${url}">${url}</a></p>`,
+      });
     },
   },
   trustedOrigins: [baseClientUrl],

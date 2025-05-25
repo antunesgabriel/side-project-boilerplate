@@ -1,4 +1,5 @@
-import { RiEyeLine } from "@remixicon/react";
+import { RiEyeLine, RiInformationFill } from "@remixicon/react";
+import { Link } from "react-router";
 
 import * as Divider from "@repo/ui/components/ui/divider";
 import * as FancyButton from "@repo/ui/components/ui/fancy-button";
@@ -6,6 +7,7 @@ import * as LinkButton from "@repo/ui/components/ui/link-button";
 import * as Input from "@repo/ui/components/ui/input";
 import * as Label from "@repo/ui/components/ui/label";
 import * as SocialButton from "@repo/ui/components/ui/social-button";
+import * as Hint from "@repo/ui/components/ui/hint";
 
 import IconGoogle from "~/assets/google.svg?react";
 import Logo from "~/assets/logo-two.svg?react";
@@ -32,7 +34,7 @@ export function SignInPage() {
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-1">
             <Label.Root htmlFor="email">Email Address</Label.Root>
-            <Input.Root>
+            <Input.Root hasError>
               <Input.Wrapper>
                 <Input.Input
                   id="email"
@@ -41,6 +43,11 @@ export function SignInPage() {
                 />
               </Input.Wrapper>
             </Input.Root>
+
+            <Hint.Root>
+              <Hint.Icon as={RiInformationFill} />
+              This is a hint text to help user.
+            </Hint.Root>
           </div>
 
           <div className="flex flex-col gap-1">
@@ -69,8 +76,8 @@ export function SignInPage() {
 
         <div className="flex justify-center gap-1 text-paragraph-sm text-text-sub-600">
           Don’t have an account?
-          <LinkButton.Root variant="black" size="medium">
-            Register
+          <LinkButton.Root variant="black" size="medium" asChild>
+            <Link to="/auth/sign-up">Register</Link>
           </LinkButton.Root>
         </div>
       </div>
