@@ -5,10 +5,16 @@ import { NotificationProvider } from "@repo/ui/components/ui/notification-provid
 import { Toaster } from "@repo/ui/components/ui/toast";
 
 import { ThemeProvider } from "~/providers/theme-provider";
+
+import { ProtectedLayout } from "~/layouts/protected.layout";
+
 import { SignInPage } from "~/pages/auth/sign-in.page";
-import { WelcomeLayout } from "~/layouts/welcome.layout";
 import { WelcomePage } from "~/pages/welcome.page";
 import { SignUpPage } from "~/pages/auth/sign-up.page";
+import { VerifyEmailPage } from "~/pages/auth/verify-email.page";
+import { OnboardingPage } from "~/pages/protected/onboarding.page";
+import { ForgetPasswordPage } from "~/pages/auth/forget-password.page";
+import { ResetPasswordPage } from "~/pages/auth/reset-password.page";
 
 function App() {
   return (
@@ -19,12 +25,23 @@ function App() {
       >
         <TooltipProvider>
           <Routes>
-            <Route path="/" element={<WelcomeLayout />}>
-              <Route index element={<WelcomePage />} />
-            </Route>
-
             <Route path="/auth/sign-in" element={<SignInPage />} />
             <Route path="/auth/sign-up" element={<SignUpPage />} />
+            <Route path="/auth/verify-email" element={<VerifyEmailPage />} />
+            <Route
+              path="/auth/forget-password"
+              element={<ForgetPasswordPage />}
+            />
+            <Route
+              path="/auth/reset-password"
+              element={<ResetPasswordPage />}
+            />
+
+            <Route path="/" element={<ProtectedLayout />}>
+              <Route index element={<WelcomePage />} />
+
+              <Route path="onboarding" element={<OnboardingPage />} />
+            </Route>
           </Routes>
         </TooltipProvider>
         <NotificationProvider />

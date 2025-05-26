@@ -29,3 +29,15 @@ export const AUTH_ERROR_MESSAGES: Record<AuthErrorCode, string> = {
   FAILED_TO_UNLINK_LAST_ACCOUNT: "Failed to unlink last account",
   ACCOUNT_NOT_FOUND: "Account not found",
 };
+
+export const {
+  useSession,
+  signIn,
+  signUp,
+  signOut,
+  forgetPassword,
+  resetPassword,
+} = authClient;
+
+export type Session = typeof authClient.$Infer.Session;
+export type User = typeof authClient.$Infer.Session.user;
