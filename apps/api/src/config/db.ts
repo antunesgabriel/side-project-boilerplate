@@ -1,9 +1,15 @@
 import { drizzle } from "drizzle-orm/libsql";
 import { createClient } from "@libsql/client";
+import { Context } from "hono";
+import { env } from "hono/adapter";
 
-const turso = createClient({
-  url: process.env.TURSO_DATABASE_URL!,
-  authToken: process.env.TURSO_AUTH_TOKEN!,
-});
+export const getDB = (context: Context) => {
+  const { TURSO_DATABASE_URL, TURSO_AUTH_TOKEN } = env<Env>(context);
 
-export const db = drizzle(turso);
+  const turso = createClient({
+    url: TURSO_DATABASE_URL,
+    authToken: TURSO_AUTH_TOKEN ?? undefined,
+  });
+
+  return drizzle(turso);
+};

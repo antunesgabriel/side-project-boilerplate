@@ -1,46 +1,72 @@
 import { Resend } from "resend";
+import { Context } from "hono";
+import { DB } from "better-auth/adapters/drizzle";
+import { env } from "hono/adapter";
 
 import { optionsWithDrizzleAdapter, getAuthInstance } from "@repo/auth/auth";
 
-import { db } from "~/config/db";
+let resend: Resend;
 
-const resend = new Resend(process.env.RESEND_API_KEY!);
+export const getAuth = (context: Context, db: DB) => {
+  const {
+    BASE_URL,
+    BETTER_AUTH_SECRET,
+    BASE_CLIENT_URL,
+    RESEND_API_KEY,
+    RESEND_EMAIL_FROM,
+  } = env<Env>(context);
 
-const baseUrl = process.env.BASE_URL!;
-const secret = process.env.BETTER_AUTH_SECRET!;
-const baseClientUrl = process.env.BASE_CLIENT_URL!;
+  if (
+    !BASE_URL ||
+    !BETTER_AUTH_SECRET ||
+    !BASE_CLIENT_URL ||
+    !RESEND_API_KEY ||
+    !RESEND_EMAIL_FROM
+  ) {
+    throw new Error(
+      "Missing environment variablesL: BASE_URL, BETTER_AUTH_SECRET, BASE_CLIENT_URL, RESEND_API_KEY, RESEND_EMAIL_FROM"
+    );
+  }
 
-const options = optionsWithDrizzleAdapter(db, "sqlite", {}, baseUrl, secret, {
-  emailAndPassword: {
-    enabled: true,
-    requireEmailVerification: true,
-    async sendResetPassword({ user, url }) {
-      await resend.emails.send({
-        from: process.env.RESEND_EMAIL_FROM!,
-        to: user.email,
-        subject: "Reset your password",
-        text: `Hey ${user.name}, here is your password reset link: ${url}`,
-        html: `<p>Hey ${user.name},</p><p>Here is your password reset link: <a href="${url}">${url}</a></p>`,
-      });
-    },
-  },
-  emailVerification: {
-    async sendVerificationEmail({ user, url, token }) {
-      await resend.emails.send({
-        from: process.env.RESEND_EMAIL_FROM!,
-        to: user.email,
-        subject: "Verify your email address",
-        text: `Hey ${user.name}, verify your email address, please: ${url}`,
-        html: `<p>Hey ${user.name},</p><p>Verify your email address, please: <a href="${url}">${url}</a></p>`,
-      });
-    },
-  },
-  trustedOrigins: [baseClientUrl],
-});
+  if (!resend) {
+    resend = new Resend(RESEND_API_KEY);
+  }
 
-export const auth = getAuthInstance(options);
+  const options = optionsWithDrizzleAdapter(
+    db,
+    "sqlite",
+    {},
+    BASE_URL,
+    BETTER_AUTH_SECRET,
+    {
+      emailAndPassword: {
+        enabled: true,
+        requireEmailVerification: true,
+        async sendResetPassword({ user, url }) {
+          await resend.emails.send({
+            from: RESEND_EMAIL_FROM,
+            to: user.email,
+            subject: "Reset your password",
+            text: `Hey ${user.name}, here is your password reset link: ${url}`,
+            html: `<p>Hey ${user.name},</p><p>Here is your password reset link: <a href="${url}">${url}</a></p>`,
+          });
+        },
+      },
+      emailVerification: {
+        async sendVerificationEmail({ user, url, token }) {
+          await resend.emails.send({
+            from: RESEND_EMAIL_FROM,
+            to: user.email,
+            subject: "Verify your email address",
+            text: `Hey ${user.name}, verify your email address, please: ${url}`,
+            html: `<p>Hey ${user.name},</p><p>Verify your email address, please: <a href="${url}">${url}</a></p>`,
+          });
+        },
+      },
+      trustedOrigins: [BASE_CLIENT_URL],
+      basePath: "/auth",
+    }
+  );
 
-export type AuthType = {
-  user: typeof auth.$Infer.Session.user | null;
-  session: typeof auth.$Infer.Session.session | null;
+  return getAuthInstance(options);
 };

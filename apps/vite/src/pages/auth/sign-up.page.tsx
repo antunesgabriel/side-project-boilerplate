@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  RiCheckboxCircleFill,
-  RiCloseCircleFill,
-  RiEyeLine,
-  RiEyeOffLine,
-  RiLock2Line,
-} from "@remixicon/react";
+import { RiEyeLine, RiEyeOffLine, RiLock2Line } from "@remixicon/react";
 import { Link } from "react-router";
 
 import * as Divider from "@repo/ui/components/ui/divider";
@@ -168,33 +162,6 @@ export function SignUpPage() {
 
             <div className="flex flex-col gap-2 pt-1.5">
               <LevelBar levels={3} level={trueCriteriaCount} />
-              <div className="text-paragraph-xs text-text-sub-600">
-                Must contain at least;
-              </div>
-              <div className="flex items-center gap-1.5 text-paragraph-xs text-text-sub-600">
-                {criteria.uppercase ? (
-                  <RiCheckboxCircleFill className="size-4 shrink-0 text-success-base" />
-                ) : (
-                  <RiCloseCircleFill className="size-4 shrink-0 text-text-soft-400" />
-                )}
-                At least 1 uppercase
-              </div>
-              <div className="flex items-center gap-1.5 text-paragraph-xs text-text-sub-600">
-                {criteria.number ? (
-                  <RiCheckboxCircleFill className="size-4 shrink-0 text-success-base" />
-                ) : (
-                  <RiCloseCircleFill className="size-4 shrink-0 text-text-soft-400" />
-                )}
-                At least 1 number
-              </div>
-              <div className="flex items-center gap-1.5 text-paragraph-xs text-text-sub-600">
-                {criteria.length ? (
-                  <RiCheckboxCircleFill className="size-4 shrink-0 text-success-base" />
-                ) : (
-                  <RiCloseCircleFill className="size-4 shrink-0 text-text-soft-400" />
-                )}
-                At least 8 characters
-              </div>
             </div>
           </div>
 
@@ -202,11 +169,24 @@ export function SignUpPage() {
             <Label.Root htmlFor="confirm-password">Confirm Password</Label.Root>
             <Input.Root>
               <Input.Wrapper>
+                <Input.Icon as={RiLock2Line} />
+
                 <Input.Input
                   id="confirm-password"
                   type="password"
                   placeholder="••••••••••"
                 />
+
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((s) => !s)}
+                >
+                  {showPassword ? (
+                    <RiEyeOffLine className="size-5 text-text-soft-400 group-has-[disabled]:text-text-disabled-300" />
+                  ) : (
+                    <RiEyeLine className="size-5 text-text-soft-400 group-has-[disabled]:text-text-disabled-300" />
+                  )}
+                </button>
               </Input.Wrapper>
             </Input.Root>
           </div>
