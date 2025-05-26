@@ -15,6 +15,8 @@ export const getAuth = (context: Context, db: DB) => {
     BASE_CLIENT_URL,
     RESEND_API_KEY,
     RESEND_EMAIL_FROM,
+    GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET,
   } = env<Env>(context);
 
   if (
@@ -25,7 +27,7 @@ export const getAuth = (context: Context, db: DB) => {
     !RESEND_EMAIL_FROM
   ) {
     throw new Error(
-      "Missing environment variablesL: BASE_URL, BETTER_AUTH_SECRET, BASE_CLIENT_URL, RESEND_API_KEY, RESEND_EMAIL_FROM"
+      "Missing environment variablesL: BASE_URL, BETTER_AUTH_SECRET, BASE_CLIENT_URL, RESEND_API_KEY, RESEND_EMAIL_FROM",
     );
   }
 
@@ -54,7 +56,7 @@ export const getAuth = (context: Context, db: DB) => {
         },
       },
       emailVerification: {
-        async sendVerificationEmail({ user, url, token }) {
+        async sendVerificationEmail({ user, url }) {
           await resend.emails.send({
             from: RESEND_EMAIL_FROM,
             to: user.email,
@@ -66,7 +68,14 @@ export const getAuth = (context: Context, db: DB) => {
       },
       trustedOrigins: [BASE_CLIENT_URL],
       basePath: "/auth",
-    }
+      socialProviders: {
+        google: {
+          prompt: "select_account",
+          clientId: GOOGLE_CLIENT_ID,
+          clientSecret: GOOGLE_CLIENT_SECRET,
+        },
+      },
+    },
   );
 
   return getAuthInstance(options);

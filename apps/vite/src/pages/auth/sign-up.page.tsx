@@ -21,7 +21,7 @@ import * as Alert from "@repo/ui/components/ui/alert";
 import * as Hint from "@repo/ui/components/ui/hint";
 import { LevelBar } from "@repo/ui/components/blocks/level-bar";
 
-import { signUp, AUTH_ERROR_MESSAGES } from "~/config/auth";
+import { signUp, AUTH_ERROR_MESSAGES, signIn } from "~/config/auth";
 import IconGoogle from "~/assets/google.svg?react";
 import Logo from "~/assets/logo-two.svg?react";
 
@@ -69,6 +69,31 @@ export function SignUpPage() {
 
   const navigate = useNavigate();
 
+  const signUpWithGoogle = async () => {
+    setIsLoading(true);
+
+    const { error, data } = await signIn
+      .social({
+        provider: "google",
+        callbackURL: `${BASE_URL}/onboarding`,
+      })
+      .finally(() => setIsLoading(false));
+
+    if (error) {
+      const errorMessage = error.code
+        ? AUTH_ERROR_MESSAGES[error.code as keyof typeof AUTH_ERROR_MESSAGES]
+        : "Sorry, something went wrong. Please try again later.";
+
+      setAlertErrorMessage(errorMessage);
+
+      return;
+    }
+
+    if (!data?.url) return;
+
+    window.location.href = data.url;
+  };
+
   const onSubmit: SubmitHandler<FormValues> = async (values) => {
     setIsLoading(true);
     setAlertErrorMessage(undefined);
@@ -113,9 +138,12 @@ export function SignUpPage() {
           </div>
         </div>
 
-        <SocialButton.Root mode="stroke">
+        <SocialButton.Root mode="stroke" onClick={signUpWithGoogle}>
           <SocialButton.Icon as={IconGoogle} />
           Sign Up with Google
+          {isLoading && (
+            <FancyButton.Icon as={RiLoaderLine} className="animate-spin" />
+          )}
         </SocialButton.Root>
 
         <Divider.Root variant="line-text">OR</Divider.Root>

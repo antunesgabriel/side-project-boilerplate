@@ -11,7 +11,7 @@ export function WelcomePage() {
       <Header />
 
       <main className="flex flex-col flex-1">
-        <div className="container flex-1 px-5 mx-auto">
+        <div className="container flex-1 px-5 pb-5 mx-auto">
           <div className="flex flex-col items-center mt-48">
             <h1 className="max-w-3xl text-center text-balance text-title-h3 text-text-strong-950">
               Quick Starter AlignUI Template with Next.js & Typescript
@@ -81,6 +81,17 @@ export function WelcomePage() {
                     to="/auth/sign-in"
                   >
                     /auth/sign-in
+                  </Link>
+                  .
+                </li>
+
+                <li>
+                  Onboarding page in{" "}
+                  <Link
+                    className="hover:underline text-primary-base"
+                    to="/onboarding"
+                  >
+                    /onboarding
                   </Link>
                   .
                 </li>

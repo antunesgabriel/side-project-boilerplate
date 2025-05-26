@@ -24,6 +24,8 @@ import { AUTH_ERROR_MESSAGES, signIn } from "~/config/auth";
 import IconGoogle from "~/assets/google.svg?react";
 import Logo from "~/assets/logo-two.svg?react";
 
+const BASE_URL = import.meta.env.VITE_APP_BASE_URL;
+
 const formSchema = z.object({
   email: z.string().email("Invalid email address"),
   password: z
@@ -50,6 +52,27 @@ export function SignInPage() {
       password: "",
     },
   });
+
+  const signInWithGoogle = async () => {
+    setIsLoading(true);
+
+    const { error } = await signIn
+      .social({
+        provider: "google",
+        callbackURL: `${BASE_URL}/`,
+      })
+      .finally(() => setIsLoading(false));
+
+    if (error) {
+      const errorMessage = error.code
+        ? AUTH_ERROR_MESSAGES[error.code as keyof typeof AUTH_ERROR_MESSAGES]
+        : "Sorry, something went wrong. Please try again later.";
+
+      setAlertErrorMessage(errorMessage);
+
+      return;
+    }
+  };
 
   const onSubmit: SubmitHandler<FormValues> = async (values) => {
     setIsLoading(true);
@@ -90,9 +113,16 @@ export function SignInPage() {
           </div>
         </div>
 
-        <SocialButton.Root mode="stroke">
+        <SocialButton.Root
+          mode="stroke"
+          onClick={signInWithGoogle}
+          disabled={isLoading}
+        >
           <SocialButton.Icon as={IconGoogle} />
           Login with Google
+          {isLoading && (
+            <SocialButton.Icon as={RiLoaderLine} className="animate-spin" />
+          )}
         </SocialButton.Root>
         <Divider.Root variant="line-text">OR</Divider.Root>
 
