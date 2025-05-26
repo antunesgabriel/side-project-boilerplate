@@ -4,6 +4,7 @@ import { DB } from "better-auth/adapters/drizzle";
 import { env } from "hono/adapter";
 
 import { optionsWithDrizzleAdapter, getAuthInstance } from "@repo/auth/auth";
+import * as schema from "~/db/schema";
 
 let resend: Resend;
 
@@ -35,7 +36,7 @@ export const getAuth = (context: Context, db: DB) => {
   const options = optionsWithDrizzleAdapter(
     db,
     "sqlite",
-    {},
+    schema,
     BASE_URL,
     BETTER_AUTH_SECRET,
     {
