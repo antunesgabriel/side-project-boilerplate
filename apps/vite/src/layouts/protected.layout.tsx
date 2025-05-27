@@ -1,7 +1,13 @@
 import { RiLoaderLine } from "@remixicon/react";
 import { Navigate, Outlet } from "react-router";
 
+import {
+  SidebarProvider,
+  SidebarInset,
+} from "@repo/ui/components/blocks/sidebar";
+
 import { useSession } from "~/config/auth";
+import { AppSidebar } from "~/components/app-sidebar";
 
 export function ProtectedLayout() {
   const { data: session, isPending } = useSession();
@@ -19,8 +25,13 @@ export function ProtectedLayout() {
     return <Navigate to="/auth/verify-email" replace />;
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Outlet />
-    </div>
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset>
+        <main className="flex flex-col min-h-screen">
+          <Outlet />
+        </main>
+      </SidebarInset>
+    </SidebarProvider>
   );
 }
