@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+
   /*#region Colors */
   :root {
-    --font-sans: Inter, sans-serif;;
-    --font-geist-mono: 'Geist Mono', monospace;
+    --font-sans: Inter, sans-serif;
+    --font-geist-mono: "Geist Mono", monospace;
 
     --gray-950: #171717;
     --gray-900: #1c1c1c;
@@ -407,6 +408,10 @@
 
   html {
     @apply antialiased;
+  }
+
+  * {
+    @apply border-stroke-soft-200;
   }
 }
 
