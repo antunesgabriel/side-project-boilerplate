@@ -13,7 +13,6 @@ import {
   SidebarContent,
   SidebarFooter,
   SidebarGroup,
-  SidebarHeader,
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
@@ -21,9 +20,8 @@ import {
   SidebarMenuItemActiveIndicator,
   SidebarMenuAction,
 } from "@repo/ui/components/blocks/sidebar";
-import * as Divider from "@repo/ui/components/ui/divider";
 
-import Logo from "~/assets/logo.svg?react";
+import { AppSidebarHeader } from "./app-siderbar-header";
 
 const main = [
   {
@@ -61,33 +59,7 @@ const main = [
 export function AppSidebar() {
   return (
     <Sidebar className="bg-bg-weak-50">
-      <SidebarHeader>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              size="lg"
-              className="flex gap-3 items-center p-3 w-full text-left whitespace-nowrap outline-none focus:outline-none transition-all-default"
-            >
-              <div className="size-10 shrink-0 text-primary-base">
-                <Logo className="size-10" />
-              </div>
-
-              <div className="flex gap-3 items-center transition duration-300 w-[172px] shrink-0">
-                <div className="flex-1 space-y-1">
-                  <div className="text-label-sm">Apex</div>
-                  <div className="text-paragraph-xs text-text-sub-600">
-                    Finance &amp; Banking
-                  </div>
-                </div>
-              </div>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarHeader>
-
-      <div className="px-5">
-        <Divider.Root />
-      </div>
+      <AppSidebarHeader />
 
       <SidebarContent>
         <SidebarGroup>
@@ -114,7 +86,7 @@ export function AppSidebar() {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter />
+      <SidebarFooter>{/*  */}</SidebarFooter>
     </Sidebar>
   );
 }

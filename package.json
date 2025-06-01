@@ -24,6 +24,7 @@
     "@tanstack/react-table": "catalog:",
     "better-auth": "catalog:",
     "eslint": "catalog:",
+    "motion": "^12.15.0",
     "zod": "catalog:"
   }
 }
