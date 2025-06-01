@@ -13,7 +13,7 @@ export default function Header() {
   const { open, toggleSidebar } = useSidebar();
   return (
     <div>
-      <header className="flex justify-between items-center px-5 mx-auto max-w-5xl h-[88px]">
+      <header className="flex justify-between items-center px-5 mx-auto w-full max-w-[1360px] min-h-[88px]">
         <div className="flex items-center gap-3">
           <AnimatePresence initial={false}>
             {open ? null : (
