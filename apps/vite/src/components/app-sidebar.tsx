@@ -1,5 +1,13 @@
-import { Link } from "react-router";
-import { RiArtboard2Line, RiMap2Line, RiPieChartLine } from "@remixicon/react";
+import { NavLink } from "react-router";
+import {
+  RiApps2Line,
+  RiArrowRightSLine,
+  RiBarChartBoxLine,
+  RiHistoryLine,
+  RiLayoutGridLine,
+  RiPriceTag3Line,
+  RiShoppingBag2Line,
+} from "@remixicon/react";
 import {
   Sidebar,
   SidebarContent,
@@ -10,26 +18,43 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarGroupLabel,
+  SidebarMenuItemActiveIndicator,
+  SidebarMenuAction,
 } from "@repo/ui/components/blocks/sidebar";
 import * as Divider from "@repo/ui/components/ui/divider";
 
 import Logo from "~/assets/logo.svg?react";
 
-const projects = [
+const main = [
   {
-    name: "Design Engineering",
+    name: "Overview",
     url: "#",
-    icon: RiArtboard2Line,
+    icon: RiLayoutGridLine,
   },
   {
-    name: "Sales & Marketing",
+    name: "Analytics",
     url: "#",
-    icon: RiPieChartLine,
+    icon: RiBarChartBoxLine,
   },
   {
-    name: "Travel",
+    name: "Products",
     url: "#",
-    icon: RiMap2Line,
+    icon: RiShoppingBag2Line,
+  },
+  {
+    name: "Orders",
+    url: "#",
+    icon: RiHistoryLine,
+  },
+  {
+    name: "Discounts",
+    url: "#",
+    icon: RiPriceTag3Line,
+  },
+  {
+    name: "Apps",
+    url: "#",
+    icon: RiApps2Line,
   },
 ];
 
@@ -66,19 +91,23 @@ export function AppSidebar() {
 
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Projects</SidebarGroupLabel>
+          <SidebarGroupLabel>Main</SidebarGroupLabel>
           <SidebarMenu>
-            {projects.map((project, idx) => (
-              <SidebarMenuItem key={project.name}>
-                <SidebarMenuButton
-                  className="group relative flex items-center gap-2 whitespace-nowrap rounded-lg py-2 text-text-sub-600 hover:bg-bg-weak-50 transition duration-200 ease-out aria-[current=page]:bg-bg-weak-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 w-full px-3 text-label-sm"
-                  isActive={idx === 0}
-                  asChild
-                >
-                  <Link to={`/projects/${project.url}`}>
-                    <project.icon />
-                    <span>{project.name}</span>
-                  </Link>
+            {main.map((item, idx) => (
+              <SidebarMenuItem key={item.name}>
+                <SidebarMenuButton isActive={idx === 0} asChild>
+                  <NavLink to={`/projects/${item.url}`}>
+                    <SidebarMenuItemActiveIndicator />
+                    <item.icon />
+                    <span>{item.name}</span>
+
+                    <SidebarMenuAction
+                      className="size-5 opacity-0 transition-all duration-200 ease-out group-data-[active=true]:opacity-100 text-text-soft-400"
+                      disabled
+                    >
+                      <RiArrowRightSLine />
+                    </SidebarMenuAction>
+                  </NavLink>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             ))}
