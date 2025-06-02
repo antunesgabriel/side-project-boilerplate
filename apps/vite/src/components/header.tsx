@@ -1,41 +1,24 @@
-import { motion, AnimatePresence } from "motion/react";
-import { RiSidebarUnfoldLine } from "@remixicon/react";
-import { Link } from "react-router";
+import { RiLayoutLeftLine } from "@remixicon/react";
 
 import * as CompactButton from "@repo/ui/components/ui/compact-button";
 import { useSidebar } from "@repo/ui/components/blocks/sidebar";
 
-import Logo from "~/assets/logo-two.svg?react";
-
 import ThemeSwitch from "./theme-switch";
 
 export default function Header() {
-  const { open, toggleSidebar } = useSidebar();
+  const { toggleSidebar } = useSidebar();
   return (
     <div>
-      <header className="flex justify-between items-center px-5 mx-auto w-full max-w-[1360px] min-h-[88px]">
-        <div className="flex items-center gap-3">
-          <AnimatePresence initial={false}>
-            {open ? null : (
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0 }}
-              >
-                <CompactButton.Root onClick={toggleSidebar} variant="ghost">
-                  <CompactButton.Icon as={RiSidebarUnfoldLine} />
-                </CompactButton.Root>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
-          <Link
-            to="/"
-            className="flex gap-2 items-center text-label-md text-text-strong-950"
+      <header className="flex justify-between items-center py-4 px-4 mx-auto w-full">
+        <div className="flex gap-2 items-center">
+          <CompactButton.Root
+            onClick={toggleSidebar}
+            className="text-text-sub-600"
           >
-            <Logo className="text-primary-base size-9" />
-            SideSaas
-          </Link>
+            <CompactButton.Icon as={RiLayoutLeftLine} />
+          </CompactButton.Root>
+
+          <div className="truncate text-label-sm">Home</div>
         </div>
 
         <ThemeSwitch />
