@@ -410,6 +410,10 @@
     @apply antialiased;
   }
 
+  body, html {
+    @apply text-[100%] antialiased;
+  }
+
   * {
     @apply border-stroke-soft-200;
   }
@@ -419,4 +423,17 @@
 .remixicon path {
   transform: scale(0.8996);
   transform-origin: center;
+}
+
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  font-feature-settings: inherit;
+  font-variation-settings: inherit;
+  font-size: 100%;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+  margin: 0;
+  padding: 0;
 }

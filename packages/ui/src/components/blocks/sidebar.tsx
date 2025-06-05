@@ -193,6 +193,8 @@ const Sidebar = React.forwardRef<
                 "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
               } as React.CSSProperties
             }
+            className="max-w-[--sidebar-width]"
+            side="left"
           >
             <Drawer.Header className="sr-only">
               <Drawer.Title>Sidebar</Drawer.Title>

@@ -23,14 +23,19 @@ DrawerPortal.displayName = "DrawerPortal";
 
 const DrawerOverlay = React.forwardRef<
   React.ComponentRef<typeof DialogPrimitive.Overlay>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
->(({ className, ...rest }, forwardedRef) => {
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay> & {
+    side?: "left" | "right";
+  }
+>(({ className, side = "right", ...rest }, forwardedRef) => {
   return (
     <DialogPrimitive.Overlay
       ref={forwardedRef}
       className={cn(
         // base
-        "fixed inset-0 z-50 grid grid-cols-1 place-items-end overflow-hidden bg-overlay backdrop-blur-[10px]",
+        "fixed inset-0 z-50 grid grid-cols-1 overflow-hidden bg-overlay backdrop-blur-[10px]",
+        // positioning
+        side === "right" && "place-items-end",
+        side === "left" && "place-items-start",
         // animation
         "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
         className
@@ -43,22 +48,29 @@ DrawerOverlay.displayName = "DrawerOverlay";
 
 const DrawerContent = React.forwardRef<
   React.ComponentRef<typeof DialogPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
->(({ className, children, ...rest }, forwardedRef) => {
+  React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & {
+    side?: "left" | "right";
+  }
+>(({ className, children, side = "right", ...rest }, forwardedRef) => {
   return (
     <DrawerPortal>
-      <DrawerOverlay>
+      <DrawerOverlay side={side}>
         <DialogPrimitive.Content
           ref={forwardedRef}
           className={cn(
             // base
-            "size-full max-w-[400px] overflow-y-auto",
-            "border-l border-stroke-soft-200 bg-bg-white-0",
+            "size-full max-w-[400px] overflow-y-auto bg-bg-white-0",
+            // borders
+            side === "right" && "border-l border-stroke-soft-200",
+            side === "left" && "border-r border-stroke-soft-200",
             // animation
             "data-[state=open]:duration-200 data-[state=open]:ease-out data-[state=open]:animate-in",
             "data-[state=closed]:duration-200 data-[state=closed]:ease-in data-[state=closed]:animate-out",
-            "data-[state=open]:slide-in-from-right-full",
-            "data-[state=closed]:slide-out-to-right-full",
+            // slide animations
+            side === "right" &&
+              "data-[state=open]:slide-in-from-right-full data-[state=closed]:slide-out-to-right-full",
+            side === "left" &&
+              "data-[state=open]:slide-in-from-left-full data-[state=closed]:slide-out-to-left-full",
             className
           )}
           {...rest}

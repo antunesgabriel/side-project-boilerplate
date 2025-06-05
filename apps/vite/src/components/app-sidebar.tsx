@@ -22,6 +22,7 @@ import {
 } from "@repo/ui/components/blocks/sidebar";
 
 import { AppSidebarHeader } from "./app-siderbar-header";
+import { AppSidebarUserProfile } from "./app-sidebar-user-profile";
 
 const main = [
   {
@@ -86,7 +87,9 @@ export function AppSidebar() {
           </SidebarMenu>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>{/*  */}</SidebarFooter>
+      <SidebarFooter>
+        <AppSidebarUserProfile />
+      </SidebarFooter>
     </Sidebar>
   );
 }

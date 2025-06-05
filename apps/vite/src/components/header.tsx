@@ -3,8 +3,6 @@ import { RiLayoutLeftLine } from "@remixicon/react";
 import * as CompactButton from "@repo/ui/components/ui/compact-button";
 import { useSidebar } from "@repo/ui/components/blocks/sidebar";
 
-import ThemeSwitch from "./theme-switch";
-
 export default function Header() {
   const { toggleSidebar } = useSidebar();
   return (
@@ -21,7 +19,7 @@ export default function Header() {
           <div className="truncate text-label-sm">Home</div>
         </div>
 
-        <ThemeSwitch />
+        {/* Left content */}
       </header>
     </div>
   );

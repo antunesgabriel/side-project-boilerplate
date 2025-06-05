@@ -4,6 +4,7 @@ import { RiLogoutBoxRLine } from "@remixicon/react";
 import * as Button from "@repo/ui/components/ui/button";
 
 import { signOut } from "~/config/auth";
+
 export function OnboardingPage() {
   const navigate = useNavigate();
 
