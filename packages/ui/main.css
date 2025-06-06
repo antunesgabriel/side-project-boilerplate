@@ -315,6 +315,12 @@
     --stable-base: var(--teal-500);
     --stable-light: var(--teal-200);
     --stable-lighter: var(--teal-50);
+
+    --chart-1: var(--primary-base);
+    --chart-2: var(--primary-dark);
+    --chart-3: var(--primary-darker);
+    --chart-4: var(--primary-alpha-16);
+    --chart-5: var(--primary-alpha-10);
   }
 
   .dark {

@@ -51,6 +51,7 @@
     "react-aria-components": "^1.4.1",
     "react-day-picker": "8.10.1",
     "react-otp-input": "^3.1.1",
+    "recharts": "^2.15.3",
     "sonner": "^1.7.4",
     "tailwind-merge": "^2.5.4",
     "tailwind-variants": "^0.2.1"
