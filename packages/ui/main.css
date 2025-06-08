@@ -321,6 +321,15 @@
     --chart-3: var(--primary-darker);
     --chart-4: var(--primary-alpha-16);
     --chart-5: var(--primary-alpha-10);
+
+    --sidebar-background: var(--bg-white-0);
+    --sidebar-foreground: var(--text-sub-600);
+    --sidebar-primary: var(--primary-base);
+    --sidebar-primary-foreground: var(--static-white);
+    --sidebar-accent: var(--bg-weak-50);
+    --sidebar-accent-foreground: var(--text-strong-950);
+    --sidebar-border: var(--stroke-soft-200);
+    --sidebar-ring: var(--stroke-sub-300);
   }
 
   .dark {
@@ -404,6 +413,12 @@
     --social-tidal: #fff;
     --social-amazon: #fff;
     --social-zendesk: #fff;
+
+    --chart-1: var(--primary-base);
+    --chart-2: var(--primary-dark);
+    --chart-3: var(--primary-darker);
+    --chart-4: var(--primary-alpha-16);
+    --chart-5: var(--primary-alpha-10);
   }
 
   /*#endregion Colors */

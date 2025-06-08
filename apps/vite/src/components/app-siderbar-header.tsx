@@ -6,7 +6,7 @@ import {
   SidebarMenuButton,
 } from "@repo/ui/components/blocks/sidebar";
 
-import Logo from "~/assets/logo-two.svg?react";
+import { RiSupabaseFill } from "@remixicon/react";
 
 export function AppSidebarHeader() {
   return (
@@ -14,22 +14,20 @@ export function AppSidebarHeader() {
       <SidebarMenu>
         <SidebarMenuItem>
           <SidebarMenuButton
-            size="lg"
-            className="px-1.5 space-x-1 w-full"
             asChild
+            size="lg"
+            className="data-[state=open]:bg-primary-base data-[state=open]:text-sidebar-accent-foreground"
           >
             <Link to="/">
-              <div className="shrink-0 size-8">
-                <Logo className="size-8 text-primary-base" />
+              <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-7 items-center justify-center rounded-lg">
+                <RiSupabaseFill className="size-4" />
               </div>
 
-              <div>
-                <div className="text-label-md text-text-strong-950">
-                  Sidesaas
-                </div>
-                <div className="text-paragraph-xs text-text-sub-600">
-                  v0.0.1
-                </div>
+              <div className="grid flex-1 text-left text-sm leading-tight">
+                <span className="truncate text-label-sm text-text-strong-950">
+                  SideAntunes
+                </span>
+                <span className="truncate text-label-xs">v0.0.1</span>
               </div>
             </Link>
           </SidebarMenuButton>

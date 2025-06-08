@@ -27,10 +27,9 @@ export function ProtectedLayout() {
   return (
     <SidebarProvider>
       <AppSidebar />
+
       <SidebarInset>
-        <main className="flex flex-col min-h-screen">
-          <Outlet />
-        </main>
+        <Outlet />
       </SidebarInset>
     </SidebarProvider>
   );

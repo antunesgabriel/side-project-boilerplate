@@ -55,10 +55,14 @@ export function AppSidebarUserProfile() {
       <SidebarMenuItem>
         <Dropdown.Root>
           <Dropdown.Trigger asChild>
-            <SidebarMenuButton className="group flex w-full items-center gap-3 whitespace-nowrap h-auto rounded-10 p-3">
-              <Avatar.Root size="40">
+            <SidebarMenuButton
+              size="lg"
+              className="group flex w-full items-center gap-3 whitespace-nowrap h-auto rounded-10 data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+            >
+              <Avatar.Root className="size-8">
                 <Avatar.Image src="https://avatar.iran.liara.run/public/12" />
               </Avatar.Root>
+
               <div className="flex-1 space-y-1 text-left">
                 <div className="flex items-center gap-0.5 text-label-sm text-text-strong-950">
                   Jhon Doe
@@ -70,14 +74,14 @@ export function AppSidebarUserProfile() {
               </div>
 
               <SidebarMenuAction asChild>
-                <CompactButton.Root className="top-[1.5em] right-2">
+                <CompactButton.Root className="top-[1.3em] right-2">
                   <CompactButton.Icon as={RiArrowDownSLine} />
                 </CompactButton.Root>
               </SidebarMenuAction>
             </SidebarMenuButton>
           </Dropdown.Trigger>
 
-          <Dropdown.Content align="start" side="top">
+          <Dropdown.Content align="center" side="right">
             <div className="flex items-center gap-3 p-2">
               <Avatar.Root size="40">
                 <Avatar.Image src="https://avatar.iran.liara.run/public/12" />

@@ -17,8 +17,9 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarGroupLabel,
-  SidebarMenuItemActiveIndicator,
   SidebarMenuAction,
+  SidebarRail,
+  SidebarMenuItemActiveIndicator,
 } from "@repo/ui/components/blocks/sidebar";
 
 import { AppSidebarHeader } from "./app-siderbar-header";
@@ -59,7 +60,7 @@ const main = [
 
 export function AppSidebar() {
   return (
-    <Sidebar className="bg-bg-weak-50">
+    <Sidebar collapsible="icon">
       <AppSidebarHeader />
 
       <SidebarContent>
@@ -68,15 +69,20 @@ export function AppSidebar() {
           <SidebarMenu>
             {main.map((item, idx) => (
               <SidebarMenuItem key={item.name}>
-                <SidebarMenuButton isActive={idx === 0} asChild>
+                <SidebarMenuButton
+                  isActive={idx === 0}
+                  asChild
+                  tooltip={item.name}
+                >
                   <NavLink to={`/projects/${item.url}`}>
                     <SidebarMenuItemActiveIndicator />
                     <item.icon />
                     <span>{item.name}</span>
 
                     <SidebarMenuAction
-                      className="size-5 opacity-0 transition-all duration-200 ease-out group-data-[active=true]:opacity-100 text-text-soft-400"
+                      className="size-4 opacity-0 transition-all duration-200 ease-out group-data-[active=true]:opacity-100 text-text-soft-400"
                       disabled
+                      asChild
                     >
                       <RiArrowRightSLine />
                     </SidebarMenuAction>
@@ -90,6 +96,8 @@ export function AppSidebar() {
       <SidebarFooter>
         <AppSidebarUserProfile />
       </SidebarFooter>
+
+      <SidebarRail />
     </Sidebar>
   );
 }
