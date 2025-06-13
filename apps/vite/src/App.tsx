@@ -15,6 +15,7 @@ import { VerifyEmailPage } from "~/pages/auth/verify-email.page";
 import { OnboardingPage } from "~/pages/protected/onboarding.page";
 import { ForgetPasswordPage } from "~/pages/auth/forget-password.page";
 import { ResetPasswordPage } from "~/pages/auth/reset-password.page";
+import { OverviewPage } from "~/pages/protected/overview.page";
 
 function App() {
   return (
@@ -37,8 +38,10 @@ function App() {
               element={<ResetPasswordPage />}
             />
 
+            <Route path="/welcome" element={<WelcomePage />} />
+
             <Route path="/" element={<ProtectedLayout />}>
-              <Route index element={<WelcomePage />} />
+              <Route index element={<OverviewPage />} />
 
               <Route path="onboarding" element={<OnboardingPage />} />
             </Route>

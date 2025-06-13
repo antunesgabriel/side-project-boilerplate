@@ -7,10 +7,10 @@ import Header from "~/components/header";
 
 export function WelcomePage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="relative z-50 mx-auto flex w-full max-w-[1360px] flex-1 flex-col self-stretch">
       <Header />
 
-      <main className="flex flex-col flex-1">
+      <section className="flex flex-col flex-1">
         <div className="container flex-1 px-5 pb-5 mx-auto">
           <div className="flex flex-col items-center mt-48">
             <h1 className="max-w-3xl text-center text-balance text-title-h3 text-text-strong-950">
@@ -99,7 +99,7 @@ export function WelcomePage() {
             </div>
           </div>
         </div>
-      </main>
+      </section>
     </div>
   );
 }
