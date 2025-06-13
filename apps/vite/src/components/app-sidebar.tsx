@@ -28,32 +28,32 @@ import { AppSidebarUserProfile } from "./app-sidebar-user-profile";
 const main = [
   {
     name: "Overview",
-    url: "#",
+    url: "/",
     icon: RiLayoutGridLine,
   },
   {
     name: "Analytics",
-    url: "#",
+    url: "/analytics",
     icon: RiBarChartBoxLine,
   },
   {
     name: "Products",
-    url: "#",
+    url: "/products",
     icon: RiShoppingBag2Line,
   },
   {
     name: "Orders",
-    url: "#",
+    url: "/orders",
     icon: RiHistoryLine,
   },
   {
     name: "Discounts",
-    url: "#",
+    url: "/discounts",
     icon: RiPriceTag3Line,
   },
   {
     name: "Apps",
-    url: "#",
+    url: "/apps",
     icon: RiApps2Line,
   },
 ];
@@ -67,14 +67,13 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarGroupLabel>Main</SidebarGroupLabel>
           <SidebarMenu>
-            {main.map((item, idx) => (
+            {main.map((item) => (
               <SidebarMenuItem key={item.name}>
-                <SidebarMenuButton
-                  isActive={idx === 0}
-                  asChild
-                  tooltip={item.name}
-                >
-                  <NavLink to={`/projects/${item.url}`}>
+                <SidebarMenuButton asChild tooltip={item.name}>
+                  <NavLink
+                    to={item.url}
+                    className={({ isActive }) => (isActive ? "active" : "")}
+                  >
                     <SidebarMenuItemActiveIndicator />
                     <item.icon />
                     <span>{item.name}</span>

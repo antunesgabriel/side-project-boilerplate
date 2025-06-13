@@ -1,6 +1,6 @@
 import { useNavigate, Link } from "react-router";
 import {
-  RiArrowDownSLine,
+  RiArrowUpSLine,
   RiExchangeLine,
   RiLayoutGridLine,
   RiLogoutBoxRLine,
@@ -75,7 +75,7 @@ export function AppSidebarUserProfile() {
 
               <SidebarMenuAction asChild>
                 <CompactButton.Root className="top-[1.3em] right-2">
-                  <CompactButton.Icon as={RiArrowDownSLine} />
+                  <CompactButton.Icon as={RiArrowUpSLine} />
                 </CompactButton.Root>
               </SidebarMenuAction>
             </SidebarMenuButton>
