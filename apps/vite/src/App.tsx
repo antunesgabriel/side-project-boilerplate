@@ -7,6 +7,7 @@ import { Toaster } from "@repo/ui/components/ui/toast";
 import { ThemeProvider } from "~/providers/theme-provider";
 
 import { ProtectedLayout } from "~/layouts/protected.layout";
+import { SettingsLayout } from "~/layouts/settings.layout";
 
 import { SignInPage } from "~/pages/auth/sign-in.page";
 import { WelcomePage } from "~/pages/welcome.page";
@@ -16,6 +17,7 @@ import { OnboardingPage } from "~/pages/protected/onboarding.page";
 import { ForgetPasswordPage } from "~/pages/auth/forget-password.page";
 import { ResetPasswordPage } from "~/pages/auth/reset-password.page";
 import { OverviewPage } from "~/pages/protected/overview.page";
+import { GeneralSettingsPage } from "~/pages/protected/settings/general.page";
 
 function App() {
   return (
@@ -44,6 +46,10 @@ function App() {
               <Route index element={<OverviewPage />} />
 
               <Route path="onboarding" element={<OnboardingPage />} />
+
+              <Route path="settings" element={<SettingsLayout />}>
+                <Route index element={<GeneralSettingsPage />} />
+              </Route>
             </Route>
           </Routes>
         </TooltipProvider>

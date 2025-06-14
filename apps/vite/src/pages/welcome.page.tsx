@@ -3,12 +3,10 @@ import { RiGithubFill } from "@remixicon/react";
 
 import * as Button from "@repo/ui/components/ui/button";
 
-import Header from "~/components/header";
-
 export function WelcomePage() {
   return (
-    <div className="relative z-50 mx-auto flex w-full max-w-[1360px] flex-1 flex-col self-stretch">
-      <Header />
+    <div className="flex relative z-50 flex-col flex-1 self-stretch mx-auto w-full max-w-[1360px]">
+      {/* Header */}
 
       <section className="flex flex-col flex-1">
         <div className="container flex-1 px-5 pb-5 mx-auto">

@@ -64,7 +64,7 @@ export function AppSidebarUserProfile() {
               </Avatar.Root>
 
               <div className="flex-1 space-y-1 text-left">
-                <div className="flex items-center gap-0.5 text-label-sm text-text-strong-950">
+                <div className="flex gap-0.5 items-center text-label-sm text-text-strong-950">
                   Jhon Doe
                   <CustomVerifiedIconSVG />
                 </div>
@@ -74,7 +74,7 @@ export function AppSidebarUserProfile() {
               </div>
 
               <SidebarMenuAction asChild>
-                <CompactButton.Root className="top-[1.3em] right-2">
+                <CompactButton.Root className="right-2 top-[1.3em]">
                   <CompactButton.Icon as={RiArrowUpSLine} />
                 </CompactButton.Root>
               </SidebarMenuAction>
@@ -82,7 +82,7 @@ export function AppSidebarUserProfile() {
           </Dropdown.Trigger>
 
           <Dropdown.Content align="center" side="right">
-            <div className="flex items-center gap-3 p-2">
+            <div className="flex gap-3 items-center p-2">
               <Avatar.Root size="40">
                 <Avatar.Image src="https://avatar.iran.liara.run/public/12" />
                 <Avatar.Indicator position="top">

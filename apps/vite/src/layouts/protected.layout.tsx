@@ -29,7 +29,12 @@ export function ProtectedLayout() {
       <AppSidebar />
 
       <SidebarInset>
-        <Outlet />
+        {/* Header mobile */}
+        <div className="flex justify-between items-center px-4 w-full border-b md:hidden h-[60px] border-stroke-soft-200"></div>
+
+        <div className="flex flex-col flex-1 mx-auto w-full max-w-[1360px]">
+          <Outlet />
+        </div>
       </SidebarInset>
     </SidebarProvider>
   );
