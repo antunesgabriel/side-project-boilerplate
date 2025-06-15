@@ -17,7 +17,12 @@ import { OnboardingPage } from "~/pages/protected/onboarding.page";
 import { ForgetPasswordPage } from "~/pages/auth/forget-password.page";
 import { ResetPasswordPage } from "~/pages/auth/reset-password.page";
 import { OverviewPage } from "~/pages/protected/overview.page";
-import { GeneralSettingsPage } from "~/pages/protected/settings/general.page";
+import { GeneralPage } from "~/pages/protected/settings/general.page";
+import { ProfilePage } from "~/pages/protected/settings/profile.page";
+import { SecurityPage } from "~/pages/protected/settings/security.page";
+import { NotificationsPage } from "~/pages/protected/settings/notifications.page";
+import { IntegrationsPage } from "~/pages/protected/settings/integrations.page";
+import { BillingPage } from "~/pages/protected/billing.page";
 
 function App() {
   return (
@@ -47,8 +52,14 @@ function App() {
 
               <Route path="onboarding" element={<OnboardingPage />} />
 
+              <Route path="billing" element={<BillingPage />} />
+
               <Route path="settings" element={<SettingsLayout />}>
-                <Route index element={<GeneralSettingsPage />} />
+                <Route index element={<GeneralPage />} />
+                <Route path="profile" element={<ProfilePage />} />
+                <Route path="security" element={<SecurityPage />} />
+                <Route path="notifications" element={<NotificationsPage />} />
+                <Route path="integrations" element={<IntegrationsPage />} />
               </Route>
             </Route>
           </Routes>
