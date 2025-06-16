@@ -172,10 +172,12 @@ function ChartTooltipContent({
 
   const nestLabel = payload.length === 1 && indicator !== "dot";
 
+  // z-50 shadow-tooltip animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded px-1.5 py-0.5 text-paragraph-xs bg-bg-white-0 text-text-strong-950 ring-1 ring-stroke-soft-200
+
   return (
     <div
       className={cn(
-        "ring-1 ring-inset ring-stroke-soft-200 bg-bg-white-0 grid min-w-[8rem] items-start gap-1.5 rounded-2xl border px-2.5 py-1.5 text-label-xs shadow-regular-xs",
+        "z-50 shadow-tooltip animate-in min-w-28 fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 rounded px-1.5 py-1 text-paragraph-xs bg-bg-white-0 text-text-strong-950 ring-1 ring-stroke-soft-200",
         className
       )}
     >
@@ -204,7 +206,7 @@ function ChartTooltipContent({
                     !hideIndicator && (
                       <div
                         className={cn(
-                          "shrink-0 rounded-[2px] border-(--color-border) bg-(--color-bg)",
+                          "shrink-0 rounded-[2px] border-[--color-border] bg-[--color-bg]",
                           {
                             "h-2.5 w-2.5": indicator === "dot",
                             "w-1": indicator === "line",
@@ -234,6 +236,7 @@ function ChartTooltipContent({
                         {itemConfig?.label || item.name}
                       </span>
                     </div>
+
                     {item.value && (
                       <span className="font-mono font-medium tabular-nums text-text-strong-950">
                         {item.value.toLocaleString()}
@@ -346,10 +349,10 @@ function getPayloadConfigFromPayload(
 }
 
 export {
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-  ChartLegend,
-  ChartLegendContent,
-  ChartStyle,
+  ChartContainer as Root,
+  ChartTooltip as Tooltip,
+  ChartTooltipContent as TooltipContent,
+  ChartLegend as Legend,
+  ChartLegendContent as LegendContent,
+  ChartStyle as Style,
 };

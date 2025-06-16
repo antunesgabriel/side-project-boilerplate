@@ -25,6 +25,7 @@
     "better-auth": "catalog:",
     "eslint": "catalog:",
     "motion": "^12.15.0",
+    "recharts": "^2.15.3",
     "zod": "catalog:"
   }
 }
