@@ -60,7 +60,7 @@ const main = [
 
 export function AppSidebar() {
   return (
-    <Sidebar collapsible="icon" variant="inset">
+    <Sidebar collapsible="icon" variant="sidebar">
       <AppSidebarHeader />
 
       <SidebarContent>
