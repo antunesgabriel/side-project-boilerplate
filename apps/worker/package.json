@@ -1,5 +1,5 @@
 {
-  "name": "@apps/api",
+  "name": "@apps/worker",
   "scripts": {
     "dev": "bun wrangler dev",
     "deploy": "bun wrangler deploy --minify",

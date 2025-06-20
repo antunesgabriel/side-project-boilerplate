@@ -6,7 +6,9 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "dev:studio": "turbo dev --filter=@apps/studio"
+    "dev:studio": "turbo dev --filter=@apps/studio",
+    "dev:worker": "turbo dev --filter=@apps/worker",
+    "dev:client": "turbo dev --filter=@apps/client"
   },
   "devDependencies": {
     "@better-auth/cli": "^1.2.8",
