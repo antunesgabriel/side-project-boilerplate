@@ -8,6 +8,7 @@ import {
 
 import { useSession } from "~/config/auth";
 import { AppSidebar } from "~/components/app-sidebar";
+import { MobileHeader } from "~/components/mobile-header";
 
 export function ProtectedLayout() {
   const { data: session, isPending } = useSession();
@@ -30,7 +31,7 @@ export function ProtectedLayout() {
 
       <SidebarInset>
         {/* Header mobile */}
-        <div className="flex justify-between items-center px-4 w-full border-b md:hidden h-[60px] border-stroke-soft-200"></div>
+        <MobileHeader user={session.user} />
 
         <div className="flex flex-col flex-1 mx-auto w-full max-w-[1360px]">
           <Outlet />

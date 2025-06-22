@@ -21,6 +21,7 @@ import * as Badge from "@repo/ui/components/ui/badge";
 import * as Divider from "@repo/ui/components/ui/divider";
 import * as Dropdown from "@repo/ui/components/ui/dropdown";
 import * as Switch from "@repo/ui/components/ui/switch";
+import { useIsMobile } from "@repo/ui/hooks/use-is-mobile";
 
 import { useTheme } from "~/hooks/use-theme";
 import { signOut } from "~/config/auth";
@@ -43,6 +44,7 @@ const CustomVerifiedIconSVG = () => (
 export function AppSidebarUserProfile() {
   const { theme, setTheme } = useTheme();
   const { data: session } = useSession();
+  const isMobile = useIsMobile();
 
   const navigate = useNavigate();
 
@@ -74,7 +76,7 @@ export function AppSidebarUserProfile() {
                 </Avatar.Indicator>
               </Avatar.Root>
 
-              <div className="flex-1 space-y-1 text-left">
+              <div className="flex-1 space-y-0.5 text-left">
                 <div className="flex gap-0.5 items-center text-label-sm text-text-strong-950 truncate max-w-36">
                   {session.user.name}
                 </div>
@@ -92,7 +94,7 @@ export function AppSidebarUserProfile() {
             </SidebarMenuButton>
           </Dropdown.Trigger>
 
-          <Dropdown.Content align="center" side="right">
+          <Dropdown.Content align="end" side={isMobile ? "top" : "right"}>
             <div className="flex gap-3 items-center p-2">
               <Avatar.Root size="40">
                 {avatarUrl ? <Avatar.Image src={avatarUrl} /> : initials}

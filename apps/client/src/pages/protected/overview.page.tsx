@@ -32,12 +32,13 @@ export function OverviewPage() {
     <div className="flex relative z-50 flex-col flex-1 self-stretch mx-auto w-full max-w-[1360px]">
       <PageHeader.Root
         title={session?.user?.name ?? ""}
-        subtitle="Welcome back to Side Project"
+        subtitle="Welcome back to Company👋🏽"
         icon={<PageHeader.Icon as={RiUserLine} />}
+        avatarUrl={session?.user?.image ?? undefined}
       />
 
       <section className="px-4 lg:px-8">
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(344px,1fr))] items-start justify-center gap-6">
+        <div className="grid gap-6 justify-center items-start grid-cols-[repeat(auto-fill,minmax(344px,1fr))]">
           <Card.Root>
             <Card.Header>
               <RiLineChartLine className="size-6 text-text-sub-600" />
@@ -51,14 +52,14 @@ export function OverviewPage() {
 
             <Divider.Root className="mt-2" />
 
-            <Card.Content className="space-y-5 pt-5">
-              <div className="flex items-center gap-2.5">
-                <div className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary-alpha-10">
+            <Card.Content className="pt-5 space-y-5">
+              <div className="flex gap-2.5 items-center">
+                <div className="flex justify-center items-center rounded-full size-10 shrink-0 bg-primary-alpha-10">
                   <RiTimeFill className="size-5 text-primary-base" />
                 </div>
 
                 <div className="space-y-1">
-                  <h3 className="text-subheading-2xs uppercase text-text-soft-400">
+                  <h3 className="uppercase text-subheading-2xs text-text-soft-400">
                     Total Work
                   </h3>
                   <p className="text-label-lg text-text-strong-950">

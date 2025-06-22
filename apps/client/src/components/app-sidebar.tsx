@@ -2,11 +2,9 @@ import { NavLink } from "react-router";
 import {
   RiApps2Line,
   RiArrowRightSLine,
-  RiBarChartBoxLine,
-  RiHistoryLine,
+  RiCalendarLine,
   RiLayoutGridLine,
-  RiPriceTag3Line,
-  RiShoppingBag2Line,
+  RiGroupLine,
 } from "@remixicon/react";
 import {
   Sidebar,
@@ -18,7 +16,6 @@ import {
   SidebarMenuButton,
   SidebarGroupLabel,
   SidebarMenuAction,
-  SidebarRail,
   SidebarMenuItemActiveIndicator,
 } from "@repo/ui/components/blocks/sidebar";
 
@@ -32,24 +29,14 @@ const main = [
     icon: RiLayoutGridLine,
   },
   {
-    name: "Analytics",
-    url: "/analytics",
-    icon: RiBarChartBoxLine,
+    name: "Calendar",
+    url: "/calendar",
+    icon: RiCalendarLine,
   },
   {
-    name: "Products",
-    url: "/products",
-    icon: RiShoppingBag2Line,
-  },
-  {
-    name: "Orders",
-    url: "/orders",
-    icon: RiHistoryLine,
-  },
-  {
-    name: "Discounts",
-    url: "/discounts",
-    icon: RiPriceTag3Line,
+    name: "Team",
+    url: "/team",
+    icon: RiGroupLine,
   },
   {
     name: "Apps",
@@ -60,7 +47,7 @@ const main = [
 
 export function AppSidebar() {
   return (
-    <Sidebar collapsible="icon" variant="sidebar">
+    <Sidebar collapsible="icon" variant="inset">
       <AppSidebarHeader />
 
       <SidebarContent>
@@ -79,7 +66,7 @@ export function AppSidebar() {
                     <span>{item.name}</span>
 
                     <SidebarMenuAction
-                      className="size-4 opacity-0 transition-all duration-200 ease-out group-data-[active=true]:opacity-100 text-text-soft-400"
+                      className="size-4 opacity-0 transition-all duration-200 ease-out group-data-[active=true]:opacity-100 !text-text-soft-400"
                       disabled
                       asChild
                     >
@@ -95,8 +82,6 @@ export function AppSidebar() {
       <SidebarFooter>
         <AppSidebarUserProfile />
       </SidebarFooter>
-
-      <SidebarRail />
     </Sidebar>
   );
 }

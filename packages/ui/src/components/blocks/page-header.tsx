@@ -7,10 +7,14 @@ type PageHeaderProps = React.HTMLAttributes<HTMLDivElement> & {
   title: string;
   subtitle?: string;
   icon?: React.ReactNode;
+  avatarUrl?: string;
 };
 
 const Root = React.forwardRef<HTMLDivElement, PageHeaderProps>(
-  ({ title, subtitle, icon, children, className, ...rest }, forwardedRef) => {
+  (
+    { title, subtitle, icon, children, className, avatarUrl, ...rest },
+    forwardedRef
+  ) => {
     return (
       <header
         ref={forwardedRef}
@@ -18,9 +22,17 @@ const Root = React.forwardRef<HTMLDivElement, PageHeaderProps>(
         {...rest}
       >
         <div className="flex flex-1 gap-4 lg:gap-3.5">
-          <div className="flex justify-center items-center rounded-full ring-1 ring-inset size-12 shrink-0 bg-bg-white-0 shadow-regular-xs ring-stroke-soft-200">
-            {icon}
+          <div className="flex text-static-black relative justify-center items-center rounded-full ring-1 ring-inset size-12 shrink-0 bg-bg-white-0 shadow-regular-xs ring-stroke-soft-200">
+            {avatarUrl ? (
+              <img
+                className="size-full rounded-full object-cover"
+                src={avatarUrl}
+              />
+            ) : (
+              icon
+            )}
           </div>
+
           <div className="space-y-1">
             <h1 className="text-label-md text-text-strong-950 lg:text-label-lg">
               {title}
@@ -34,7 +46,7 @@ const Root = React.forwardRef<HTMLDivElement, PageHeaderProps>(
         {children}
       </header>
     );
-  },
+  }
 );
 
 Root.displayName = "PageHeader";

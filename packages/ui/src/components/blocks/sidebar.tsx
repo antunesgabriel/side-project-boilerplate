@@ -17,7 +17,7 @@ import { Skeleton } from "@ui/components/ui/skeleton";
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
 const SIDEBAR_WIDTH = "17rem";
-const SIDEBAR_WIDTH_MOBILE = "18rem";
+const SIDEBAR_WIDTH_MOBILE = "100%";
 const SIDEBAR_WIDTH_ICON = "3rem";
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
 
@@ -177,7 +177,7 @@ function Sidebar({
           data-sidebar="sidebar"
           data-slot="sidebar"
           data-mobile="true"
-          className="bg-bg-white-0 text-sidebar-foreground w-[var(--sidebar-width)] p-0 [&>button]:hidden max-w-[300px]"
+          className="bg-bg-white-0 text-sidebar-foreground w-[var(--sidebar-width)] p-0 [&>button]:hidden max-w-full"
           style={
             {
               "--sidebar-width": SIDEBAR_WIDTH_MOBILE,
@@ -393,7 +393,7 @@ function SidebarGroupLabel({
       data-slot="sidebar-group-label"
       data-sidebar="group-label"
       className={cn(
-        "text-sidebar-foreground/70 ring-sidebar-ring flex h-8 shrink-0 items-center rounded-md px-2 text-label-xs outline-hidden transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
+        "text-sidebar-foreground/70 uppercase ring-sidebar-ring flex h-8 shrink-0 items-center rounded-md px-2 text-label-xs outline-hidden transition-[margin,opacity] duration-200 ease-linear focus-visible:ring-2 [&>svg]:size-4 [&>svg]:shrink-0",
         "group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0",
         className
       )}
@@ -462,7 +462,7 @@ function SidebarMenuItem({ className, ...props }: React.ComponentProps<"li">) {
 }
 
 const sidebarMenuButtonVariants = cva(
-  "peer/menu-button flex w-full items-center gap-2 overflow-hidden rounded-lg py-2 px-3 text-left text-paragraph-sm outline-none ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&.active]:bg-sidebar-accent [&.active]:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:transition-all [&>svg]:duration-200 [&>svg]:size-5 [&>svg]:shrink-0 [&:hover>svg]:text-primary-base [&.active>svg]:text-primary-base  [&[data-active=true]>svg]:text-primary-base group-data-[collapsible=icon]:[&>svg]:size-4 font-medium [&.active]:font-semibold",
+  "peer/menu-button group flex w-full items-center gap-2 overflow-hidden rounded-lg py-2 px-3 text-left text-paragraph-sm outline-none ring-sidebar-ring transition-[width,height,padding] hover:bg-sidebar-accent hover:text-sidebar-accent-foreground focus-visible:ring-2 [&.active]:bg-sidebar-accent [&.active]:text-sidebar-accent-foreground disabled:pointer-events-none disabled:opacity-50 group-has-[[data-sidebar=menu-action]]/menu-item:pr-8 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[active=true]:bg-sidebar-accent data-[active=true]:font-medium data-[active=true]:text-sidebar-accent-foreground data-[state=open]:hover:bg-sidebar-accent data-[state=open]:hover:text-sidebar-accent-foreground group-data-[collapsible=icon]:!size-8 group-data-[collapsible=icon]:!p-2 [&>span:last-child]:truncate [&>svg]:transition-all [&>svg]:duration-200 [&>svg]:size-5 [&>svg]:shrink-0 [&:hover>svg]:text-primary-base [&.active>svg]:text-primary-base  [&[data-active=true]>svg]:text-primary-base [&.active>svg]:opacity-100 group-data-[collapsible=icon]:[&>svg]:size-4 font-medium [&.active]:font-semibold",
   {
     variants: {
       variant: {
@@ -703,7 +703,7 @@ const SidebarMenuItemActiveIndicator = React.forwardRef<
     ref={ref}
     data-sidebar="menu-item-active-indicator"
     className={cn(
-      "absolute opacity-0 top-1/2 h-5 w-1 origin-left -translate-y-1/2 rounded-r-full bg-primary-base transition duration-200 ease-out -left-4 scale-100 group-data-[active=true]:opacity-100",
+      "absolute opacity-0 top-1/2 h-5 w-1 origin-left -translate-y-1/2 rounded-r-full bg-primary-base transition duration-200 ease-out left-0 scale-100 group-[.active]:opacity-100 group-data-[active=true]:opacity-100",
       className
     )}
     {...props}

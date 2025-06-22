@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 
 import { Provider as TooltipProvider } from "@repo/ui/components/ui/tooltip";
 import { NotificationProvider } from "@repo/ui/components/ui/notification-provider";
@@ -7,6 +7,7 @@ import { Toaster } from "@repo/ui/components/ui/toast";
 import { ThemeProvider } from "~/providers/theme-provider";
 
 import { ProtectedLayout } from "~/layouts/protected.layout";
+import { AuthLayout } from "~/layouts/auth.layout";
 import { SettingsLayout } from "~/layouts/settings.layout";
 
 import { SignInPage } from "~/pages/auth/sign-in.page";
@@ -33,17 +34,14 @@ function App() {
       >
         <TooltipProvider>
           <Routes>
-            <Route path="/auth/sign-in" element={<SignInPage />} />
-            <Route path="/auth/sign-up" element={<SignUpPage />} />
-            <Route path="/auth/verify-email" element={<VerifyEmailPage />} />
-            <Route
-              path="/auth/forget-password"
-              element={<ForgetPasswordPage />}
-            />
-            <Route
-              path="/auth/reset-password"
-              element={<ResetPasswordPage />}
-            />
+            <Route path="auth" element={<AuthLayout />}>
+              <Route index element={<Navigate replace to="/auth/sign-in" />} />
+              <Route path="sign-in" element={<SignInPage />} />
+              <Route path="sign-up" element={<SignUpPage />} />
+              <Route path="verify-email" element={<VerifyEmailPage />} />
+              <Route path="forget-password" element={<ForgetPasswordPage />} />
+              <Route path="reset-password" element={<ResetPasswordPage />} />
+            </Route>
 
             <Route path="/welcome" element={<WelcomePage />} />
 
